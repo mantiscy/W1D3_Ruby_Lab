@@ -6,11 +6,26 @@ def menu
   print "(b)asic, (a)dvanced, or (q)uit: "
   gets.chomp.downcase
 end
+
+def basic_calc_option
+  print "(a)dd, (s)ubtract, (m)ultiply, (d)ivide: "
+  @operation = gets.chomp.downcase
+end
+
+def continue
+  print "Press Enter"
+  z = gets
+end
+
  
 def basic_calc
   # ask the user which operation they want to perform
-  print "(a)dd, (s)ubtract, (m)ultiply, (d)ivide: "
-  operation = gets.chomp.downcase
+  basic_calc_option
+
+  while @operation != 'a' && @operation !='s'&& @operation != 'm'&& @operation != 'd'
+    puts "Please enter a valid input"
+    basic_calc_option
+  end
  
   # get firsr number
   puts "Enter first number: "
@@ -21,7 +36,7 @@ def basic_calc
   second_num = gets.chomp.to_f
 
   #Act on user choice
-  puts case operation
+  puts case @operation
   when 'a'
     first_num + second_num
   when 's'
@@ -33,7 +48,7 @@ def basic_calc
   end
 
   # print "Press Enter to continue."
-  sleep(3)
+  continue
 
 end #Basic calculator ends
 
@@ -60,7 +75,7 @@ def advanced_calc
     Math.sqrt(num)
   end
     
-  sleep(1)
+  continue
 
 end
  
